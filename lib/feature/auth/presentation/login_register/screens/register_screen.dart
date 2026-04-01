@@ -1,21 +1,18 @@
 import 'package:bookia/core/constants/app_images.dart';
 import 'package:bookia/core/functions/navigations.dart';
-import 'package:bookia/core/styles/colors.dart';
 import 'package:bookia/core/styles/text_styles.dart';
 import 'package:bookia/core/widgets/custom_svg_picture.dart';
 import 'package:bookia/core/widgets/custom_text_form_field.dart';
 import 'package:bookia/core/widgets/main_button.dart';
 import 'package:bookia/core/widgets/my_body_view.dart';
 import 'package:bookia/core/widgets/password_text_form_field.dart';
-import 'package:bookia/feature/auth/presentation/login_register/screens/register_screen.dart';
-import 'package:bookia/feature/auth/presentation/login_register/widgets/social_login.dart';
+import 'package:bookia/feature/auth/presentation/login_register/screens/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/widgets/auth_footer.dart';
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,43 +33,28 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                'Welcome back! Glad to see you, Again!',
+                'Hello! Register to get started',
                 style: TextStyles.headline,
               ),
               Gap(32),
-              CustomTextFormField(hintText: 'Enter your email'),
+              CustomTextFormField(hintText: 'Full Name'),
               Gap(16),
-              PasswordTextFormField(hintText: 'Enter your password'),
-              Gap(10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      // pushTo(context, const ForgotPasswordScreen());
-                    },
-                    child: Text(
-                      'Forgot Password?',
-                      style: TextStyles.caption1.copyWith(
-                        color: AppColors.darkGreyColor,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              CustomTextFormField(hintText: 'Email'),
+              Gap(16),
+              PasswordTextFormField(hintText: 'Password'),
+              Gap(16),
+              PasswordTextFormField(hintText: 'Confirm Password'),
               Gap(30),
-              MainButton(text: 'Login', onPressed: () {}),
-              Gap(30),
-              SocialLogin(),
+              MainButton(text: 'Register', onPressed: () {}),
             ],
           ),
         ),
       ),
       bottomNavigationBar: AuthFooter(
-        label: 'Don\'t have an account?',
-        buttonLabel: 'Sign Up',
+        label: 'Already have an account?',
+        buttonLabel: 'Sign in',
         onTap: () {
-          pushReplacement(context, const RegisterScreen());
+          pushReplacement(context, const LoginScreen());
         },
       ),
     );
