@@ -7,6 +7,7 @@ import 'package:bookia/core/widgets/custom_text_form_field.dart';
 import 'package:bookia/core/widgets/main_button.dart';
 import 'package:bookia/core/widgets/my_body_view.dart';
 import 'package:bookia/core/widgets/password_text_form_field.dart';
+import 'package:bookia/feature/auth/presentation/forget_password/screens/forgot_password_screen.dart';
 import 'package:bookia/feature/auth/presentation/login_register/screens/register_screen.dart';
 import 'package:bookia/feature/auth/presentation/login_register/widgets/social_login.dart';
 import 'package:bookia/feature/auth/presentation/widgets/auth_footer.dart';
@@ -49,7 +50,10 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      // pushTo(context, const ForgotPasswordScreen());
+                      pushTo(
+                        context,
+                        const ForgotPasswordScreen(),
+                      );
                     },
                     child: Text(
                       'Forgot Password?',
