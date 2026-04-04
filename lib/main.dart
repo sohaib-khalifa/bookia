@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:bookia/core/services/apis/dio_provider.dart';
 import 'package:bookia/core/styles/themes.dart';
 import 'package:bookia/feature/splash/splash_screen.dart';
 import 'package:device_preview/device_preview.dart';
@@ -6,6 +7,8 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  DioProvider.init();
   runApp(
     DevicePreview(
       // enabled: !kReleaseMode,
