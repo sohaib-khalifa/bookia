@@ -1,12 +1,12 @@
 import 'package:bookia/core/constants/app_images.dart';
-import 'package:bookia/core/functions/navigations.dart';
+import 'package:bookia/core/routes/navigations.dart';
+import 'package:bookia/core/routes/routes.dart';
 import 'package:bookia/core/styles/text_styles.dart';
 import 'package:bookia/core/widgets/custom_svg_picture.dart';
 import 'package:bookia/core/widgets/custom_text_form_field.dart';
 import 'package:bookia/core/widgets/main_button.dart';
 import 'package:bookia/core/widgets/my_body_view.dart';
 import 'package:bookia/core/widgets/password_text_form_field.dart';
-import 'package:bookia/feature/auth/presentation/login_register/screens/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/widgets/auth_footer.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -54,7 +54,7 @@ class RegisterScreen extends StatelessWidget {
         label: 'Already have an account?',
         buttonLabel: 'Sign in',
         onTap: () {
-          pushReplacement(context, const LoginScreen());
+          pushReplacement(context, Routes.login);
         },
       ),
     );

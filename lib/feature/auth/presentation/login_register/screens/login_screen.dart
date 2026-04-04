@@ -1,5 +1,6 @@
 import 'package:bookia/core/constants/app_images.dart';
-import 'package:bookia/core/functions/navigations.dart';
+import 'package:bookia/core/routes/navigations.dart';
+import 'package:bookia/core/routes/routes.dart';
 import 'package:bookia/core/styles/colors.dart';
 import 'package:bookia/core/styles/text_styles.dart';
 import 'package:bookia/core/widgets/custom_svg_picture.dart';
@@ -7,8 +8,6 @@ import 'package:bookia/core/widgets/custom_text_form_field.dart';
 import 'package:bookia/core/widgets/main_button.dart';
 import 'package:bookia/core/widgets/my_body_view.dart';
 import 'package:bookia/core/widgets/password_text_form_field.dart';
-import 'package:bookia/feature/auth/presentation/forget_password/screens/forgot_password_screen.dart';
-import 'package:bookia/feature/auth/presentation/login_register/screens/register_screen.dart';
 import 'package:bookia/feature/auth/presentation/login_register/widgets/social_login.dart';
 import 'package:bookia/feature/auth/presentation/widgets/auth_footer.dart';
 
@@ -52,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                       pushTo(
                         context,
-                        const ForgotPasswordScreen(),
+                        Routes.forgotPassword,
                       );
                     },
                     child: Text(
@@ -76,7 +75,7 @@ class LoginScreen extends StatelessWidget {
         label: 'Don\'t have an account?',
         buttonLabel: 'Sign Up',
         onTap: () {
-          pushReplacement(context, const RegisterScreen());
+          pushReplacement(context, Routes.register);
         },
       ),
     );
