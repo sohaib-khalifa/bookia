@@ -1,10 +1,7 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive",
     "cSpell.words": [
-        "allprojects",
-        "jvmargs",
-        "Metaspace",
-        "kotlin",
+        "buildlog",
+        "swiftpm",
         "bookia"
     ]
 }
