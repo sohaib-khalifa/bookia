@@ -41,7 +41,7 @@ class AppRouter {
         },
       ),
       GoRoute(
-        path: Routes.home,
+        path: Routes.main,
         builder: (context, state) => const MainAppScreen(),
       ),
     ],
