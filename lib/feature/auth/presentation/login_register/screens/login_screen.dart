@@ -82,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                 controller: cubit.emailController,
                 hintText: 'Enter your email',
                 validator: (value) {
-                  if (value!.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter your email';
                   } else if (!isEmailValid(value)) {
                     return 'Please enter a valid email';
@@ -95,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                 controller: cubit.passwordController,
                 hintText: 'Enter your password',
                 validator: (value) {
-                  if (value!.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter your password';
                   }
                   return null;

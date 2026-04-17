@@ -78,7 +78,7 @@ class RegisterScreen extends StatelessWidget {
                 controller: cubit.nameController,
                 hintText: 'Full Name',
                 validator: (value) {
-                  if (value!.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter your name';
                   }
                   return null;
@@ -90,7 +90,7 @@ class RegisterScreen extends StatelessWidget {
                 controller: cubit.emailController,
                 hintText: 'Email',
                 validator: (value) {
-                  if (value!.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter your email';
                   } else if (!isEmailValid(value)) {
                     return 'Please enter a valid email';
@@ -103,7 +103,7 @@ class RegisterScreen extends StatelessWidget {
                 controller: cubit.passwordController,
                 hintText: 'Password',
                 validator: (value) {
-                  if (value!.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter your password';
                   }
                   return null;
@@ -114,7 +114,7 @@ class RegisterScreen extends StatelessWidget {
                 controller: cubit.passwordConfirmationController,
                 hintText: 'Confirm Password',
                 validator: (value) {
-                  if (value!.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return 'Please confirm your password';
                   } else if (value != cubit.passwordController.text) {
                     return 'Passwords do not match';

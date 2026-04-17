@@ -4,7 +4,8 @@ import 'package:bookia/feature/auth/presentation/forget_password/screens/forgot_
 import 'package:bookia/feature/auth/presentation/login_register/screens/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/login_register/screens/register_screen.dart';
 import 'package:bookia/feature/main/main_app_screen.dart';
-import 'package:bookia/feature/splash/splash_screen.dart';
+import 'package:bookia/feature/splash/cubit/splash_cubit.dart';
+import 'package:bookia/feature/splash/screen/splash_screen.dart';
 import 'package:bookia/feature/welcome/welcome_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -12,9 +13,17 @@ import 'package:go_router/go_router.dart';
 class AppRouter {
   static final routes = GoRouter(
     routes: [
-      GoRoute(
+GoRoute(
         path: Routes.splash,
-        builder: (context, state) => const SplashScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) {
+            // return SplashCubit()..getInitData();
+            var cubit = SplashCubit();
+            cubit.getInitData();
+            return cubit;
+          },
+          child: const SplashScreen(),
+        ),
       ),
       GoRoute(
         path: Routes.welcome,
