@@ -21,9 +21,9 @@ class _MainAppScreenState extends State<MainAppScreen> {
       create: (context) => HomeCubit()..loadInitData(),
       child: HomeScreen(),
     ),
-    HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    Container(),
+    Container(),
+    Container(),
   ];
   @override
   Widget build(BuildContext context) {
