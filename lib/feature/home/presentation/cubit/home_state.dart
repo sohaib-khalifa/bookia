@@ -1,9 +1,9 @@
 class HomeState {}
 
-class HomeInitial extends HomeState {}
+class HomeInitialState extends HomeState {}
 
-class HomeLoading extends HomeState {}
+class HomeLoadingState extends HomeState {}
 
-class HomeLoaded extends HomeState {}
+class HomeLoadedState extends HomeState {}
 
-class HomeError extends HomeState {}
+class HomeErrorState extends HomeState {}

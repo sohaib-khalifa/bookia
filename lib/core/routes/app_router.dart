@@ -12,8 +12,9 @@ import 'package:go_router/go_router.dart';
 
 class AppRouter {
   static final routes = GoRouter(
+    initialLocation: Routes.splash,
     routes: [
-GoRoute(
+      GoRoute(
         path: Routes.splash,
         builder: (context, state) => BlocProvider(
           create: (context) {

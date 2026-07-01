@@ -7,13 +7,13 @@ import 'package:bookia/feature/home/presentation/cubit/home_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitial());
+  HomeCubit() : super(HomeInitialState());
 
   List<Product> products = [];
   List<Slider> sliders = [];
 
   Future<void> loadInitData() async {
-    emit(HomeLoading());
+    emit(HomeLoadingState());
     var results = await Future.wait([
       HomeRepo.getSliders(),
       HomeRepo.geBestSeller(),
@@ -25,9 +25,9 @@ class HomeCubit extends Cubit<HomeState> {
     if (slidersResponse != null || bestSellerResponse != null) {
       products = bestSellerResponse?.data?.products ?? [];
       sliders = slidersResponse?.data?.sliders ?? [];
-      emit(HomeLoaded());
+      emit(HomeLoadedState());
     } else {
-      emit(HomeError());
+      emit(HomeErrorState());
     }
   }
 }

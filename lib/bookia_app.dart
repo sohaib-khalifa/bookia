@@ -9,6 +9,7 @@ class BookiaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      routerConfig: AppRouter.routes,
       debugShowCheckedModeBanner: false,
       theme: AppThemes.lightTheme,
       builder: (context, child) {
@@ -23,7 +24,6 @@ class BookiaApp extends StatelessWidget {
           ),
         );
       },
-      routerConfig: AppRouter.routes,
     );
   }
 }
