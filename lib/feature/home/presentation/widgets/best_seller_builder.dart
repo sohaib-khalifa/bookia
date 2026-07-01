@@ -1,7 +1,6 @@
 import 'package:bookia/core/styles/text_styles.dart';
 import 'package:bookia/core/widgets/my_body_view.dart';
-import 'package:bookia/core/widgets/shimmer_book_card.dart';
-import 'package:bookia/core/widgets/shimmer_grid_view.dart';
+import 'package:bookia/core/widgets/shimmer/shimmer_grid_view.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_state.dart';
 import 'package:bookia/feature/home/presentation/widgets/book_card.dart';
@@ -23,32 +22,30 @@ class BestSellerBuilder extends StatelessWidget {
             children: [
               Text('Best Seller', style: TextStyles.title),
               Gap(10),
-                            if (state is! HomeLoadedState)
+              if (state is! HomeLoadedState)
                 ShimmerGridView(
                   itemCount: 6,
                   crossAxisCount: 2,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                   mainAxisExtent: 290,
-                  itemBuilder: (context, index) => const ShimmerBookCard(),
                 )
               else
-
-              GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  mainAxisExtent: 290,
+                GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    mainAxisExtent: 290,
+                  ),
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: cubit.products.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    var book = cubit.products[index];
+                    return BookCard(book: book);
+                  },
                 ),
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: cubit.products.length,
-                itemBuilder: (BuildContext context, int index) {
-                  var book = cubit.products[index];
-                  return BookCard(book: book);
-                },
-              ),
             ],
           ),
         );
