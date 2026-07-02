@@ -9,14 +9,21 @@ class BookCard extends StatelessWidget {
   const BookCard({
     super.key,
     required this.book,
+    this.onRemoveFromWishlist,
+    this.onTap,
   });
 
   final Product book;
+  final Function()? onTap;
+  final VoidCallback? onRemoveFromWishlist;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      // onTap: () {
+      // pushTo(context, Routes.details, extra: book);
+      // },
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -27,15 +34,18 @@ class BookCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  book.image ?? '',
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Center(child: Text('Error'));
-                  },
+              child: Hero(
+                tag: book.id ?? '',
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    book.image ?? '',
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Center(child: Text('Error'));
+                    },
+                  ),
                 ),
               ),
             ),
@@ -60,14 +70,19 @@ class BookCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(book.price ?? '', style: TextStyles.body),
-                MainButton(
-                  minHeight: 35,
-                  minWidth: 60,
-                  bgColor: AppColors.darkColor,
-    
-                  text: 'Buy',
-                  onPressed: () {},
-                ),
+                onRemoveFromWishlist != null
+                    ? IconButton(
+                        onPressed: onRemoveFromWishlist,
+                        icon: Icon(Icons.delete, color: AppColors.errorColor),
+                      )
+                    : MainButton(
+                        minHeight: 35,
+                        minWidth: 60,
+                        bgColor: AppColors.darkColor,
+
+                        text: 'Buy',
+                        onPressed: () {},
+                      ),
               ],
             ),
           ],
