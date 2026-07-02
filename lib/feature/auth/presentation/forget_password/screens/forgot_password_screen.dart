@@ -11,7 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+  // const ForgotPasswordScreen({super.key});
+  const ForgotPasswordScreen({super.key, required this.email});
+  final String email;
 
   @override
   Widget build(BuildContext context) {

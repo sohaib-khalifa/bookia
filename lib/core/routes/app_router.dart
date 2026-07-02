@@ -3,6 +3,8 @@ import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/feature/auth/presentation/forget_password/screens/forgot_password_screen.dart';
 import 'package:bookia/feature/auth/presentation/login_register/screens/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/login_register/screens/register_screen.dart';
+import 'package:bookia/feature/details/page/details_screen.dart';
+import 'package:bookia/feature/home/data/model/best_seller_response/product.dart';
 import 'package:bookia/feature/main/main_app_screen.dart';
 import 'package:bookia/feature/splash/cubit/splash_cubit.dart';
 import 'package:bookia/feature/splash/screen/splash_screen.dart';
@@ -47,12 +49,17 @@ class AppRouter {
       GoRoute(
         path: Routes.forgotPassword,
         builder: (context, state) {
-          return ForgotPasswordScreen();
+          return ForgotPasswordScreen(email: state.extra as String);
+          // return ForgotPasswordScreen();
         },
       ),
       GoRoute(
         path: Routes.main,
         builder: (context, state) => const MainAppScreen(),
+      ),
+            GoRoute(
+        path: Routes.details,
+        builder: (context, state) => DetailsScreen(model: state.extra as Product,),
       ),
     ],
   );

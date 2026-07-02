@@ -1,3 +1,5 @@
+import 'package:bookia/core/routes/navigations.dart';
+import 'package:bookia/core/routes/routes.dart';
 import 'package:bookia/core/styles/colors.dart';
 import 'package:bookia/core/styles/text_styles.dart';
 import 'package:bookia/core/widgets/main_button.dart';
@@ -10,20 +12,20 @@ class BookCard extends StatelessWidget {
     super.key,
     required this.book,
     this.onRemoveFromWishlist,
-    this.onTap,
+    // this.onTap,
   });
 
   final Product book;
-  final Function()? onTap;
+  // final Function()? onTap;
   final VoidCallback? onRemoveFromWishlist;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: () {
-      // pushTo(context, Routes.details, extra: book);
-      // },
-      onTap: onTap,
+      onTap: () {
+        pushTo(context, Routes.details, extra: book);
+      },
+      // onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
