@@ -1,3 +1,4 @@
+import 'package:bookia/core/services/local/shared_pref.dart';
 import 'package:bookia/feature/home/data/model/best_seller_response/product.dart';
 import 'package:bookia/feature/wishlist/data/repo/wishlist_repo.dart';
 import 'package:bookia/feature/wishlist/presentation/cubit/wishlist_state.dart';
@@ -8,7 +9,7 @@ class WishlistCubit extends Cubit<WishlistState> {
 
   List<Product> wishlistProducts = [];
 
-  Future<void> getWishlist({bool isLoading = false}) async {
+  Future<void> getWishlist({bool isLoading = true}) async {
     if (isLoading) {
       emit(GetWishlistLoading());
     }
@@ -49,5 +50,10 @@ class WishlistCubit extends Cubit<WishlistState> {
       }
       emit(GetWishlistError());
     }
+  }
+
+  bool checkIfWishlistChanged() {
+    var cachedItems = SharedPref.getWishlist();
+    return cachedItems.length != wishlistProducts.length;
   }
 }

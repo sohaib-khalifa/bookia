@@ -61,8 +61,13 @@ class WishlistScreen extends StatelessWidget {
                     cubit.removeFromWishlist(book.id!);
                   },
                   onRefresh: () {
-                    cubit.getWishlist();
+                    if (cubit.checkIfWishlistChanged()) {
+                      cubit.getWishlist();
+                    }
                   },
+                  // onRefresh: () {
+                  //   cubit.getWishlist();
+                  // },
                 );
               },
             );
