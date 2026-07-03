@@ -33,8 +33,9 @@ class BookCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: AppColors.secondaryColor,
+      borderRadius: BorderRadius.circular(10),
+        color: AppColors.white,
+        border: Border.all(color: AppColors.borderColor),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
