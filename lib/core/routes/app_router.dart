@@ -3,6 +3,8 @@ import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/feature/auth/presentation/forget_password/screens/forgot_password_screen.dart';
 import 'package:bookia/feature/auth/presentation/login_register/screens/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/login_register/screens/register_screen.dart';
+import 'package:bookia/feature/checkout/presentation/cubit/checkout_cubit.dart';
+import 'package:bookia/feature/checkout/presentation/page/place_order_screen.dart';
 import 'package:bookia/feature/details/page/details_screen.dart';
 import 'package:bookia/feature/home/data/model/best_seller_response/product.dart';
 import 'package:bookia/feature/main/main_app_screen.dart';
@@ -60,6 +62,15 @@ class AppRouter {
             GoRoute(
         path: Routes.details,
         builder: (context, state) => DetailsScreen(model: state.extra as Product,),
+      ),
+            GoRoute(
+        path: Routes.placeOrder,
+        builder: (context, state) {
+          return BlocProvider(
+            create: (context) => CheckoutCubit()..getGovernorates(),
+            child: PlaceOrderScreen(total: state.extra as double),
+          );
+        },
       ),
     ],
   );

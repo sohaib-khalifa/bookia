@@ -9,6 +9,7 @@ class SharedPref {
   static const String kToken = 'token';
   static const String kUserInfo = 'user';
   static const String kWishlist = 'wishlist';
+  static const String kCart = 'cart';
 
   static Future<void> init() async {
     sharedPreferences = await SharedPreferences.getInstance();
@@ -49,6 +50,17 @@ class SharedPref {
     var listOfString = getStringList(kWishlist);
     if (listOfString.isEmpty) return [];
     // convert list of strings => list of ints
+    return listOfString.map((e) => int.tryParse(e) ?? 0).toList();
+  }
+
+  static void setCart(List<int> cartIds) {
+    var listOfString = cartIds.map((e) => e.toString()).toList();
+    setStringList(kCart, listOfString);
+  }
+
+  static List<int> getCart() {
+    var listOfString = getStringList(kCart);
+    if (listOfString.isEmpty) return [];
     return listOfString.map((e) => int.tryParse(e) ?? 0).toList();
   }
 

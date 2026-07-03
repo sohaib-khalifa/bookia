@@ -6,4 +6,5 @@ class Routes {
   static const String forgotPassword = '/forgot-password';
   static const String main = '/main';
   static const String details = '/details';
+  static const String placeOrder = '/place-order';
 }
