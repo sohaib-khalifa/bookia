@@ -8,8 +8,11 @@ class WishlistCubit extends Cubit<WishlistState> {
 
   List<Product> wishlistProducts = [];
 
-  Future<void> getWishlist() async {
-    emit(GetWishlistLoading());
+  Future<void> getWishlist({bool isLoading = false}) async {
+    if (isLoading) {
+      emit(GetWishlistLoading());
+    }
+    // emit(GetWishlistLoading());
     var response = await WishlistRepo.getWishlist();
 
     if (response != null) {
