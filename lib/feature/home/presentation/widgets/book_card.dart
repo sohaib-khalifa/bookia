@@ -11,19 +11,23 @@ class BookCard extends StatelessWidget {
   const BookCard({
     super.key,
     required this.book,
-    this.onRemoveFromWishlist,
     // this.onTap,
+    this.onRemoveFromWishlist,
+      this.onRefresh,
   });
 
   final Product book;
   // final Function()? onTap;
   final VoidCallback? onRemoveFromWishlist;
+  final VoidCallback? onRefresh;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        pushTo(context, Routes.details, extra: book);
+        pushTo(context, Routes.details, extra: book).then((value) {
+          onRefresh?.call();
+        });
       },
       // onTap: onTap,
       child: Container(
