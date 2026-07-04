@@ -1,4 +1,5 @@
 import 'package:bookia/core/services/apis/apis.dart';
+import 'package:chili_debug_view/chili_debug_view.dart';
 import 'package:dio/dio.dart';
 
 abstract class DioProvider {
@@ -12,6 +13,10 @@ abstract class DioProvider {
         sendTimeout: const Duration(seconds: 3),
       ),
     );
+    dio.interceptors.addAll([
+      NetworkLoggerInterceptor(),
+      // LogInterceptor(responseBody: true, requestHeader: true),
+    ]);
   }
 
   static Future<Response> post({

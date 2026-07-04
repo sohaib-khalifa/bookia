@@ -11,11 +11,23 @@ import 'package:bookia/feature/main/main_app_screen.dart';
 import 'package:bookia/feature/splash/cubit/splash_cubit.dart';
 import 'package:bookia/feature/splash/screen/splash_screen.dart';
 import 'package:bookia/feature/welcome/welcome_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+// Person p = Person();
+// p.name="mohamed";
+// p.display();
+// Person p = Person()..name="mohamed"...display();
+
+// Navigator 1 vs Navigator 2 vs go_router
+
+final navigatorKey = GlobalKey<NavigatorState>();
+
 class AppRouter {
   static final routes = GoRouter(
+    navigatorKey: navigatorKey,
+
     initialLocation: Routes.splash,
     routes: [
       GoRoute(
@@ -59,11 +71,12 @@ class AppRouter {
         path: Routes.main,
         builder: (context, state) => const MainAppScreen(),
       ),
-            GoRoute(
+      GoRoute(
         path: Routes.details,
-        builder: (context, state) => DetailsScreen(model: state.extra as Product,),
+        builder: (context, state) =>
+            DetailsScreen(model: state.extra as Product),
       ),
-            GoRoute(
+      GoRoute(
         path: Routes.placeOrder,
         builder: (context, state) {
           return BlocProvider(
