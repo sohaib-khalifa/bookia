@@ -8,6 +8,8 @@ import 'package:bookia/feature/checkout/presentation/page/place_order_screen.dar
 import 'package:bookia/feature/details/page/details_screen.dart';
 import 'package:bookia/feature/home/data/model/best_seller_response/product.dart';
 import 'package:bookia/feature/main/main_app_screen.dart';
+import 'package:bookia/feature/profile/presentation/cubit/profile_cubit.dart';
+import 'package:bookia/feature/profile/presentation/page/edit_profile_screen.dart';
 import 'package:bookia/feature/splash/cubit/splash_cubit.dart';
 import 'package:bookia/feature/splash/screen/splash_screen.dart';
 import 'package:bookia/feature/welcome/welcome_screen.dart';
@@ -86,6 +88,13 @@ class AppRouter {
             child: PlaceOrderScreen(total: state.extra as double),
           );
         },
+      ),
+            GoRoute(
+        path: Routes.editProfile,
+        builder: (context, state) => BlocProvider(
+          create: (context) => ProfileCubit()..initProfile(),
+          child: const EditProfileScreen(),
+        ),
       ),
     ],
   );

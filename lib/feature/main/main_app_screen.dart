@@ -5,6 +5,7 @@ import 'package:bookia/feature/cart/presentation/cubit/cart_cubit.dart';
 import 'package:bookia/feature/cart/presentation/page/cart_screen.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/screen/home_screen.dart';
+import 'package:bookia/feature/profile/presentation/page/profile_screen.dart';
 import 'package:bookia/feature/wishlist/presentation/cubit/wishlist_cubit.dart';
 import 'package:bookia/feature/wishlist/presentation/page/wishlist_screen.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
       create: (context) => CartCubit()..getCart(),
       child: CartScreen(),
     ),
-    Container(),
+     const ProfileScreen(),
   ];
 
   @override
