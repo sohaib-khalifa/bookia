@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainAppScreen extends StatefulWidget {
-  const MainAppScreen({super.key});
-
+  const MainAppScreen({super.key, this.index});
+  final int? index;
   @override
   State<MainAppScreen> createState() => _MainAppScreenState();
 }
@@ -35,6 +35,23 @@ class _MainAppScreenState extends State<MainAppScreen> {
     ),
     Container(),
   ];
+
+  @override
+  void initState() {
+    currentIndex = widget.index ?? 0;
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant MainAppScreen oldWidget) {
+    if (oldWidget.index != widget.index) {
+      setState(() {
+        currentIndex = widget.index ?? 0;
+      });
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

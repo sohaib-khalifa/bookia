@@ -69,7 +69,9 @@ class AppRouter {
       ),
       GoRoute(
         path: Routes.main,
-        builder: (context, state) => const MainAppScreen(),
+        builder: (context, state) {
+          return MainAppScreen(index: state.extra as int?);
+        },
       ),
       GoRoute(
         path: Routes.details,
