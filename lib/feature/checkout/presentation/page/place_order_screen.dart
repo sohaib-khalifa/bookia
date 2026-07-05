@@ -73,6 +73,8 @@ class PlaceOrderScreen extends StatelessWidget {
                     const Gap(30),
                     CustomTextFormField(
                       controller: cubit.nameController,
+                      keyboardType: TextInputType.emailAddress,
+
                       hintText: 'Full Name',
                       validator: (v) {
                         if (v != null && v.isEmpty) {

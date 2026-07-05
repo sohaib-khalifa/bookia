@@ -90,7 +90,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
             activeIcon: CustomSvgPicture(
               path: AppImages.profileSvg,
               color: AppColors.primaryColor,
-            ),
+            ), 
             label: 'Profile',
           ),
         ],
