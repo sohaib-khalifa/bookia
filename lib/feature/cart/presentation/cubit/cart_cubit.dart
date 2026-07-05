@@ -101,7 +101,7 @@ class CartCubit extends Cubit<CartState> {
     if (response) {
       emit(CheckoutLoaded());
     } else {
-      emit(GetCartError());
+      emit(CheckoutError());
     }
   }
 }

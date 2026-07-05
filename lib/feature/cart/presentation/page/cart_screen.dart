@@ -28,6 +28,9 @@ class CartScreen extends StatelessWidget {
               showToast(context, 'Something went wrong');
             } else if (state is CheckoutLoading) {
               showLoadingDialog(context);
+            } else if (state is CheckoutError) {
+              pop(context); // close loading dialog
+              showToast(context, 'Something went wrong');
             } else if (state is CheckoutLoaded) {
               pop(context);
               pushTo(

@@ -13,4 +13,10 @@ class CheckoutLoading extends CartState {}
 
 class CheckoutLoaded extends CartState {}
 
+class CheckoutError extends CartState {
+  final String? message;
+  CheckoutError({this.message});
+}
+
 class GetCartError extends CartState {}
+
