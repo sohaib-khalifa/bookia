@@ -10,6 +10,7 @@ import 'package:bookia/feature/home/data/model/best_seller_response/product.dart
 import 'package:bookia/feature/main/main_app_screen.dart';
 import 'package:bookia/feature/profile/presentation/cubit/profile_cubit.dart';
 import 'package:bookia/feature/profile/presentation/page/edit_profile_screen.dart';
+import 'package:bookia/feature/search/presentation/page/search_screen.dart';
 import 'package:bookia/feature/splash/cubit/splash_cubit.dart';
 import 'package:bookia/feature/splash/screen/splash_screen.dart';
 import 'package:bookia/feature/welcome/welcome_screen.dart';
@@ -95,6 +96,10 @@ class AppRouter {
           create: (context) => ProfileCubit()..initProfile(),
           child: const EditProfileScreen(),
         ),
+      ),
+      GoRoute(
+        path: Routes.search,
+        builder: (context, state) => const SearchScreen(),
       ),
     ],
   );

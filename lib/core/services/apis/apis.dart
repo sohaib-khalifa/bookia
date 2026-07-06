@@ -29,4 +29,7 @@ class Apis {
   // profile
   static const String profile = "/profile";
   static const String updateProfile = "/update-profile";
+
+    // search
+  static const String productsSearch = "/products-search";
 }
