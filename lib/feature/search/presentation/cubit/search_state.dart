@@ -1,9 +1,13 @@
-abstract class SearchState {}
+// PagingState<int, Product> is used directly as the cubit state.
+// This file is kept as a placeholder.
+// ======================================================//
 
-class SearchInitial extends SearchState {}
+// abstract class SearchState {}
 
-class SearchLoading extends SearchState {}
+// class SearchInitial extends SearchState {}
 
-class SearchLoaded extends SearchState {}
+// class SearchLoading extends SearchState {}
 
-class SearchError extends SearchState {}
+// class SearchLoaded extends SearchState {}
+
+// class SearchError extends SearchState {}

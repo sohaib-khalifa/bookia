@@ -1,12 +1,13 @@
 import 'package:bookia/core/styles/colors.dart';
 import 'package:bookia/core/styles/text_styles.dart';
 import 'package:bookia/core/widgets/shimmer/shimmer_grid_view.dart';
+import 'package:bookia/feature/home/data/model/best_seller_response/product.dart';
 import 'package:bookia/feature/home/presentation/widgets/book_card.dart';
 import 'package:bookia/feature/search/presentation/cubit/search_cubit.dart';
-import 'package:bookia/feature/search/presentation/cubit/search_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -83,44 +84,60 @@ class _SearchBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchCubit, SearchState>(
-      builder: (context, state) {
-        if (state is SearchLoading) {
+    final cubit = context.read<SearchCubit>();
+    return BlocBuilder<SearchCubit, PagingState<int, Product>>(
+      builder: (context, pagingState) {
+        if (pagingState.isLoading && pagingState.pages == null) {
           return ShimmerGridView(
             itemCount: 6,
             crossAxisCount: 2,
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
             mainAxisExtent: 290,
-          ); // // ShimmerGridView
+          );
         }
 
-        if (state is SearchError) {
+        if (pagingState.error != null && pagingState.pages == null) {
           return const _EmptyPrompt(message: 'Something went wrong');
         }
 
-        final products = context.read<SearchCubit>().products;
-        if (products.isEmpty) {
+        final items = pagingState.pages?.expand((p) => p).toList() ?? [];
+        if (!pagingState.isLoading && items.isEmpty) {
           return const _EmptyPrompt(message: 'No books found');
         }
 
         return Padding(
           padding: const EdgeInsets.all(16),
-          child: GridView.builder(
-            itemCount: products.length,
+          child: PagedGridView<int, Product>(
+            state: pagingState,
+            fetchNextPage: cubit.fetchNextPage,
+            padding: EdgeInsets.zero,
+
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
               childAspectRatio: 0.62,
-            ), // // SliverGridDelegateWithFixedCrossAxisCount
-            itemBuilder: (context, index) {
-              return BookCard(book: products[index]);
-            },
-          ), // // GridView.builder
-        ); // // Padding
+            ),
+            builderDelegate: PagedChildBuilderDelegate<Product>(
+              itemBuilder: (context, item, index) => BookCard(book: item),
+              newPageProgressIndicatorBuilder: (_) => const Center(
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+              newPageErrorIndicatorBuilder: (_) => Center(
+                child: TextButton(
+                  onPressed: cubit.fetchNextPage,
+                  child: const Text('Retry'),
+                ),
+              ),
+            ),
+          ),
+        );
       },
-    ); // // BlocBuilder
+    );
   }
 }
 
