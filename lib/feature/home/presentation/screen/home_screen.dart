@@ -5,9 +5,11 @@ import 'package:bookia/core/widgets/custom_svg_picture.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/widgets/best_seller_builder.dart';
 import 'package:bookia/feature/home/presentation/widgets/home_slider.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -23,6 +25,17 @@ class HomeScreen extends StatelessWidget {
             children: [CustomSvgPicture(path: AppImages.logoSvg, height: 30)],
           ),
           actions: [
+            IconButton(
+              onPressed: () {
+                // get locale
+                bool isArabic = context.locale.languageCode == 'ar';
+                // set another locale
+                context.setLocale(
+                  isArabic ? const Locale('en') : const Locale('ar'),
+                );
+              },
+              icon: const Icon(Icons.language_rounded),
+            ),
             IconButton(
               onPressed: () {
                 pushTo(context, Routes.search);

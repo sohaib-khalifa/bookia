@@ -7,6 +7,7 @@ import 'package:bookia/core/widgets/shimmer/shimmer_grid_view.dart';
 import 'package:bookia/feature/home/presentation/widgets/book_card.dart';
 import 'package:bookia/feature/wishlist/presentation/cubit/wishlist_cubit.dart';
 import 'package:bookia/feature/wishlist/presentation/cubit/wishlist_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +18,7 @@ class WishlistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     log(SharedPref.getToken());
     return Scaffold(
-      appBar: AppBar(title: Text('Wishlist')),
+      appBar: AppBar(title: Text('wishlist'.tr())),
       body: MyBodyView(
         child: BlocConsumer<WishlistCubit, WishlistState>(
           listener: (context, state) {
