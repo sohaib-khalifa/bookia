@@ -1,4 +1,5 @@
 import 'package:bookia/core/constants/app_images.dart';
+import 'package:bookia/core/functions/extenstions.dart';
 import 'package:bookia/core/routes/navigations.dart';
 import 'package:bookia/core/routes/routes.dart';
 import 'package:bookia/core/widgets/custom_svg_picture.dart';
@@ -28,13 +29,12 @@ class HomeScreen extends StatelessWidget {
             IconButton(
               onPressed: () {
                 // get locale
-                bool isArabic = context.locale.languageCode == 'ar';
                 // set another locale
                 context.setLocale(
-                  isArabic ? const Locale('en') : const Locale('ar'),
+                  context.isArabic ? Locale('en') : Locale('ar'),
                 );
               },
-              icon: const Icon(Icons.language_rounded),
+              icon: Icon(Icons.language_rounded),
             ),
             IconButton(
               onPressed: () {
