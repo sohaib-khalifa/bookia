@@ -12,6 +12,8 @@ import 'package:bookia/core/widgets/my_body_view.dart';
 import 'package:bookia/feature/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:bookia/feature/checkout/presentation/cubit/checkout_state.dart';
 import 'package:bookia/feature/checkout/presentation/widgets/select_governorate_bottom_sheet.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -51,7 +53,7 @@ class PlaceOrderScreen extends StatelessWidget {
               pushToBase(context, Routes.main, extra: 0);
             } else if (state is PlaceOrderError) {
               pop(context);
-              showToast(context, 'Something went wrong');
+              showToast(context, LocaleKeys.something_went_wrong.tr());
             }
           },
           builder: (context, state) {
@@ -62,10 +64,10 @@ class PlaceOrderScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Place Your Order', style: TextStyles.headline),
+                    Text(LocaleKeys.place_your_order.tr(), style: TextStyles.headline),
                     const Gap(10),
                     Text(
-                      'Don\'t worry! It occurs. Please enter the email address linked with your account.',
+                      LocaleKeys.place_order_description.tr(),
                       style: TextStyles.caption1.copyWith(
                         color: AppColors.greyColor,
                       ),
@@ -75,10 +77,10 @@ class PlaceOrderScreen extends StatelessWidget {
                       controller: cubit.nameController,
                       keyboardType: TextInputType.emailAddress,
 
-                      hintText: 'Full Name',
+                      hintText: LocaleKeys.full_name.tr(),
                       validator: (v) {
                         if (v != null && v.isEmpty) {
-                          return 'Please enter your name';
+                          return LocaleKeys.please_enter_name.tr();
                         }
                         return null;
                       },
@@ -87,10 +89,10 @@ class PlaceOrderScreen extends StatelessWidget {
 
                     CustomTextFormField(
                       controller: cubit.addressController,
-                      hintText: 'Address',
+                      hintText: LocaleKeys.address.tr(),
                       validator: (v) {
                         if (v != null && v.isEmpty) {
-                          return 'Please enter your address';
+                          return LocaleKeys.please_enter_address.tr();
                         }
                         return null;
                       },
@@ -99,12 +101,12 @@ class PlaceOrderScreen extends StatelessWidget {
                     CustomTextFormField(
                       controller: cubit.phoneController,
                       keyboardType: TextInputType.phone,
-                      hintText: 'Phone',
+                      hintText: LocaleKeys.phone.tr(),
                       validator: (v) {
                         if (v != null && v.isEmpty) {
-                          return 'Please enter your phone';
+                          return LocaleKeys.please_enter_phone.tr();
                         } else if (!isEgyptianPhone(v!)) {
-                          return 'Please enter a valid phone number';
+                          return LocaleKeys.please_enter_valid_phone.tr();
                         }
                         return null;
                       },
@@ -115,11 +117,11 @@ class PlaceOrderScreen extends StatelessWidget {
                       controller: cubit.governorateController,
                       validator: (v) {
                         if (v != null && v.isEmpty) {
-                          return 'Please select a governorate';
+                          return LocaleKeys.please_select_governorate.tr();
                         }
                         return null;
                       },
-                      hintText: 'Governorate',
+                      hintText: LocaleKeys.governorate.tr(),
                       suffixIcon: const Icon(Icons.keyboard_arrow_down),
                       onTap: () {
                         showModalBottomSheet(
@@ -159,7 +161,7 @@ class PlaceOrderScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Total:',
+                      LocaleKeys.total.tr(),
                       style: TextStyles.subtitle1.copyWith(
                         color: AppColors.greyColor,
                       ),
@@ -172,7 +174,7 @@ class PlaceOrderScreen extends StatelessWidget {
                 ),
                 const Gap(20),
                 MainButton(
-                  text: 'Submit Order',
+                  text: LocaleKeys.submit_order.tr(),
                   onPressed: () {
                     if (cubit.formKey.currentState!.validate()) {
                       cubit.placeOrder();

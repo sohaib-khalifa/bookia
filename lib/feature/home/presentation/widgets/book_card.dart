@@ -4,6 +4,8 @@ import 'package:bookia/core/styles/colors.dart';
 import 'package:bookia/core/styles/text_styles.dart';
 import 'package:bookia/core/widgets/main_button.dart';
 import 'package:bookia/feature/home/data/model/best_seller_response/product.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -50,7 +52,7 @@ class BookCard extends StatelessWidget {
                     fit: BoxFit.cover,
                     width: double.infinity,
                     errorBuilder: (context, error, stackTrace) {
-                      return const Center(child: Text('Error'));
+                      return Center(child: Text(LocaleKeys.error.tr()));
                     },
                   ),
                 ),
@@ -87,7 +89,7 @@ class BookCard extends StatelessWidget {
                         minWidth: 60,
                         bgColor: AppColors.darkColor,
 
-                        text: 'Buy',
+                        text: LocaleKeys.buy.tr(),
                         onPressed: () {},
                       ),
               ],

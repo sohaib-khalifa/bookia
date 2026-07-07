@@ -16,6 +16,8 @@ import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/feature/auth/presentation/cubit/auth_state.dart';
 import 'package:bookia/feature/auth/presentation/login_register/widgets/social_login.dart';
 import 'package:bookia/feature/auth/presentation/widgets/auth_footer.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,8 +55,8 @@ class LoginScreen extends StatelessWidget {
         ),
         body: _loginBody(context),
         bottomNavigationBar: AuthFooter(
-          label: 'Don\'t have an account?',
-          buttonLabel: 'Sign Up',
+          label: LocaleKeys.dont_have_account.tr(),
+          buttonLabel: LocaleKeys.sign_up.tr(),
           onTap: () {
             pushReplacement(context, Routes.register);
           },
@@ -74,18 +76,18 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                'Welcome back! Glad to see you, Again!',
+                LocaleKeys.welcome_back.tr(),
                 style: TextStyles.headline,
               ),
               Gap(32),
               CustomTextFormField(
                 controller: cubit.emailController,
-                hintText: 'Enter your email',
+                hintText: LocaleKeys.enter_your_email.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
+                    return LocaleKeys.please_enter_email.tr();
                   } else if (!isEmailValid(value)) {
-                    return 'Please enter a valid email';
+                    return LocaleKeys.please_enter_valid_email.tr();
                   }
                   return null;
                 },
@@ -93,10 +95,10 @@ class LoginScreen extends StatelessWidget {
               Gap(16),
               PasswordTextFormField(
                 controller: cubit.passwordController,
-                hintText: 'Enter your password',
+                hintText: LocaleKeys.enter_your_password.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
+                    return LocaleKeys.please_enter_password.tr();
                   }
                   return null;
                 },
@@ -110,7 +112,7 @@ class LoginScreen extends StatelessWidget {
                       pushTo(context, Routes.forgotPassword);
                     },
                     child: Text(
-                      'Forgot Password?',
+                      LocaleKeys.forgot_password.tr(),
                       style: TextStyles.caption1.copyWith(
                         color: AppColors.darkGreyColor,
                       ),
@@ -120,7 +122,7 @@ class LoginScreen extends StatelessWidget {
               ),
               Gap(30),
               MainButton(
-                text: 'Login',
+                text: LocaleKeys.login.tr(),
                 onPressed: () {
                   if (cubit.formKey.currentState!.validate()) {
                     cubit.login();

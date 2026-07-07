@@ -5,6 +5,8 @@ import 'package:bookia/core/styles/colors.dart';
 import 'package:bookia/core/styles/text_styles.dart';
 import 'package:bookia/core/widgets/custom_svg_picture.dart';
 import 'package:bookia/core/widgets/main_button.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -32,10 +34,10 @@ class WelcomeScreen extends StatelessWidget {
                 Spacer(flex: 2),
                 CustomSvgPicture(path: AppImages.logoSvg, width: 250),
                 Gap(30),
-                Text('Order Your Book Now!', style: TextStyles.subtitle1),
+                Text(LocaleKeys.order_your_book_now.tr(), style: TextStyles.subtitle1),
                 Spacer(flex: 5),
                 MainButton(
-                  text: 'Login',
+                  text: LocaleKeys.login.tr(),
                   onPressed: () {
                     pushTo(context, Routes.login);
                   },
@@ -45,7 +47,7 @@ class WelcomeScreen extends StatelessWidget {
                   borderColor: AppColors.darkColor,
                   bgColor: AppColors.backgroundColor,
                   textColor: AppColors.darkColor,
-                  text: 'Register',
+                  text: LocaleKeys.register.tr(),
                   onPressed: () {
                     pushTo(context, Routes.register);
                   },

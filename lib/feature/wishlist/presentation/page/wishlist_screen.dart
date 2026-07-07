@@ -29,7 +29,7 @@ class WishlistScreen extends StatelessWidget {
                 state.message?.isNotEmpty == true) {
               showToast(context, state.message ?? "", DialogType.success);
             } else if (state is GetWishlistError) {
-              showToast(context, 'Something went wrong');
+              showToast(context, LocaleKeys.something_went_wrong.tr());
             }
           },
           builder: (context, state) {
@@ -47,7 +47,7 @@ class WishlistScreen extends StatelessWidget {
 
             // GetWishlistLoaded
             if (cubit.wishlistProducts.isEmpty) {
-              return Center(child: Text('Wishlist is empty'));
+              return Center(child: Text(LocaleKeys.wishlist_is_empty.tr()));
             }
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

@@ -4,6 +4,8 @@ import 'package:bookia/core/widgets/dialogs.dart';
 import 'package:bookia/core/widgets/main_button.dart';
 import 'package:bookia/feature/cart/presentation/widgets/cart_action/cubit/cart_action_cubit.dart';
 import 'package:bookia/feature/cart/presentation/widgets/cart_action/cubit/cart_action_state.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,7 +35,7 @@ class CartActionWidget extends StatelessWidget {
           bool isInCart = cubit.isProductInCart(productId);
           return MainButton(
             minWidth: 200,
-            text: isInCart ? 'Added To Cart' : 'Add To Cart',
+            text: isInCart ? LocaleKeys.added_to_cart.tr() : LocaleKeys.add_to_cart.tr(),
             bgColor: isInCart ? AppColors.darkColor : AppColors.primaryColor,
             onPressed: () {
               if (!isInCart) {

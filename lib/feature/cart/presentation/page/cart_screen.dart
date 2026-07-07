@@ -8,6 +8,8 @@ import 'package:bookia/core/widgets/shimmer/shimmer_list_view.dart';
 import 'package:bookia/feature/cart/presentation/cubit/cart_cubit.dart';
 import 'package:bookia/feature/cart/presentation/cubit/cart_state.dart';
 import 'package:bookia/feature/cart/presentation/widgets/cart_item_widget.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -18,19 +20,19 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Cart')),
+      appBar: AppBar(title: Text(LocaleKeys.cart.tr())),
       body: MyBodyView(
         child: BlocConsumer<CartCubit, CartState>(
           buildWhen: (previous, current) =>
               current is GetCartLoading || current is GetCartLoaded,
           listener: (context, state) {
             if (state is GetCartError) {
-              showToast(context, 'Something went wrong');
+              showToast(context, LocaleKeys.something_went_wrong.tr());
             } else if (state is CheckoutLoading) {
               showLoadingDialog(context);
             } else if (state is CheckoutError) {
               pop(context); // close loading dialog
-              showToast(context, 'Something went wrong');
+              showToast(context, LocaleKeys.something_went_wrong.tr());
             } else if (state is CheckoutLoaded) {
               pop(context);
               pushTo(
@@ -49,7 +51,7 @@ class CartScreen extends StatelessWidget {
 
             // GetCartLoaded
             if (cubit.cartItems.isEmpty) {
-              return Center(child: Text('Cart is empty'));
+              return Center(child: Text(LocaleKeys.cart_is_empty.tr()));
             }
             return ListView.separated(
               itemCount: cubit.cartItems.length,
@@ -76,7 +78,7 @@ class CartScreen extends StatelessWidget {
                     if (quantity < stock) {
                       cubit.updateCart(item.itemId ?? 0, quantity + 1);
                     } else {
-                      showToast(context, 'Product is out of stock');
+                      showToast(context, LocaleKeys.product_is_out_of_stock.tr());
                     }
                   },
                 );
@@ -100,7 +102,7 @@ class CartScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Total:', style: TextStyles.subtitle1),
+                    Text(LocaleKeys.total.tr(), style: TextStyles.subtitle1),
                     Text(
                       "\$${cubit.total.ceil()}",
                       style: TextStyles.subtitle1,
@@ -109,7 +111,7 @@ class CartScreen extends StatelessWidget {
                 ),
                 const Gap(10),
                 MainButton(
-                  text: "Checkout",
+                  text: LocaleKeys.checkout.tr(),
                   onPressed: () {
                     cubit.checkout();
                   },

@@ -14,6 +14,8 @@ import 'package:bookia/core/widgets/password_text_form_field.dart';
 import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/feature/auth/presentation/cubit/auth_state.dart';
 import 'package:bookia/feature/auth/presentation/widgets/auth_footer.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -50,8 +52,8 @@ class RegisterScreen extends StatelessWidget {
         ),
         body: _registerBody(context),
         bottomNavigationBar: AuthFooter(
-          label: 'Already have an account?',
-          buttonLabel: 'Sign in',
+          label: LocaleKeys.already_have_account.tr(),
+          buttonLabel: LocaleKeys.sign_in.tr(),
           onTap: () {
             pushReplacement(context, Routes.login);
           },
@@ -70,16 +72,16 @@ class RegisterScreen extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                'Hello! Register to get started',
+                LocaleKeys.hello_register.tr(),
                 style: TextStyles.headline,
               ),
               Gap(32),
               CustomTextFormField(
                 controller: cubit.nameController,
-                hintText: 'Full Name',
+                hintText: LocaleKeys.full_name.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your name';
+                    return LocaleKeys.please_enter_name.tr();
                   }
                   return null;
                 },
@@ -88,12 +90,12 @@ class RegisterScreen extends StatelessWidget {
               Gap(16),
               CustomTextFormField(
                 controller: cubit.emailController,
-                hintText: 'Email',
+                hintText: LocaleKeys.email.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
+                    return LocaleKeys.please_enter_email.tr();
                   } else if (!isEmailValid(value)) {
-                    return 'Please enter a valid email';
+                    return LocaleKeys.please_enter_valid_email.tr();
                   }
                   return null;
                 },
@@ -101,10 +103,10 @@ class RegisterScreen extends StatelessWidget {
               Gap(16),
               PasswordTextFormField(
                 controller: cubit.passwordController,
-                hintText: 'Password',
+                hintText: LocaleKeys.password.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
+                    return LocaleKeys.please_enter_password.tr();
                   }
                   return null;
                 },
@@ -112,19 +114,19 @@ class RegisterScreen extends StatelessWidget {
               Gap(16),
               PasswordTextFormField(
                 controller: cubit.passwordConfirmationController,
-                hintText: 'Confirm Password',
+                hintText: LocaleKeys.confirm_password.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please confirm your password';
+                    return LocaleKeys.please_confirm_password.tr();
                   } else if (value != cubit.passwordController.text) {
-                    return 'Passwords do not match';
+                    return LocaleKeys.passwords_do_not_match.tr();
                   }
                   return null;
                 },
               ),
               Gap(30),
               MainButton(
-                text: 'Register',
+                text: LocaleKeys.register.tr(),
                 onPressed: () {
                   if (cubit.formKey.currentState!.validate()) {
                     cubit.register();

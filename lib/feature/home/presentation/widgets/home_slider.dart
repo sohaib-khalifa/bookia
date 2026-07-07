@@ -2,6 +2,8 @@ import 'package:bookia/core/styles/colors.dart';
 import 'package:bookia/core/widgets/shimmer/shimmer_cart.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_state.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,7 +69,7 @@ class _HomeSliderState extends State<HomeSlider> {
                         fit: BoxFit.cover,
                         width: double.infinity,
                         errorBuilder: (context, error, stackTrace) {
-                          return const Center(child: Text('Error'));
+                          return Center(child: Text(LocaleKeys.error.tr()));
                         },
                       ),
                     );

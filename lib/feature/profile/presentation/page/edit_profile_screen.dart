@@ -9,6 +9,8 @@ import 'package:bookia/core/widgets/main_button.dart';
 import 'package:bookia/core/widgets/my_body_view.dart';
 import 'package:bookia/feature/profile/presentation/cubit/profile_cubit.dart';
 import 'package:bookia/feature/profile/presentation/cubit/profile_state.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +45,7 @@ class EditProfileScreen extends StatelessWidget {
                   onTap: () => pop(context),
                   child: const CustomSvgPicture(path: AppImages.backSvg),
                 ),
-                const Expanded(child: Center(child: Text('Edit Profile'))),
+                Expanded(child: Center(child: Text(LocaleKeys.edit_profile.tr()))),
                 const Gap(40), // spacer to center the title
               ],
             ),
@@ -110,10 +112,10 @@ class EditProfileScreen extends StatelessWidget {
                     const Gap(40),
                     CustomTextFormField(
                       controller: cubit.nameController,
-                      hintText: 'Full Name',
+                      hintText: LocaleKeys.full_name.tr(),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your full name';
+                          return LocaleKeys.please_enter_full_name.tr();
                         }
                         return null;
                       },
@@ -121,10 +123,10 @@ class EditProfileScreen extends StatelessWidget {
                     const Gap(15),
                     CustomTextFormField(
                       controller: cubit.phoneController,
-                      hintText: 'Phone',
+                      hintText: LocaleKeys.phone.tr(),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your phone number';
+                          return LocaleKeys.please_enter_phone.tr();
                         }
                         return null;
                       },
@@ -132,10 +134,10 @@ class EditProfileScreen extends StatelessWidget {
                     const Gap(15),
                     CustomTextFormField(
                       controller: cubit.cityController,
-                      hintText: 'City',
+                      hintText: LocaleKeys.city.tr(),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your city';
+                          return LocaleKeys.please_enter_city.tr();
                         }
                         return null;
                       },
@@ -143,10 +145,10 @@ class EditProfileScreen extends StatelessWidget {
                     const Gap(15),
                     CustomTextFormField(
                       controller: cubit.addressController,
-                      hintText: 'Address',
+                      hintText: LocaleKeys.address.tr(),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your address';
+                          return LocaleKeys.please_enter_address.tr();
                         }
                         return null;
                       },
@@ -159,7 +161,7 @@ class EditProfileScreen extends StatelessWidget {
           bottomNavigationBar: Padding(
             padding: const EdgeInsets.all(22),
             child: MainButton(
-              text: 'Update Profile',
+              text: LocaleKeys.update_profile.tr(),
               onPressed: () {
                 if (cubit.formKey.currentState!.validate()) {
                   cubit.updateProfile();

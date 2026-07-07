@@ -4,6 +4,8 @@ import 'package:bookia/core/widgets/shimmer/shimmer_grid_view.dart';
 import 'package:bookia/feature/home/data/model/best_seller_response/product.dart';
 import 'package:bookia/feature/home/presentation/widgets/book_card.dart';
 import 'package:bookia/feature/search/presentation/cubit/search_cubit.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -57,7 +59,7 @@ class _SearchField extends StatelessWidget {
       onChanged: cubit.onSearchChanged,
       style: TextStyles.body,
       decoration: InputDecoration(
-        hintText: 'Search books...',
+        hintText: LocaleKeys.search_books.tr(),
         hintStyle: TextStyles.body.copyWith(color: AppColors.greyColor),
         filled: true,
         fillColor: AppColors.white,
@@ -98,12 +100,12 @@ class _SearchBody extends StatelessWidget {
         }
 
         if (pagingState.error != null && pagingState.pages == null) {
-          return const _EmptyPrompt(message: 'Something went wrong');
+          return _EmptyPrompt(message: LocaleKeys.something_went_wrong.tr());
         }
 
         final items = pagingState.pages?.expand((p) => p).toList() ?? [];
         if (!pagingState.isLoading && items.isEmpty) {
-          return const _EmptyPrompt(message: 'No books found');
+          return _EmptyPrompt(message: LocaleKeys.no_books_found.tr());
         }
 
         return Padding(
@@ -130,7 +132,7 @@ class _SearchBody extends StatelessWidget {
               newPageErrorIndicatorBuilder: (_) => Center(
                 child: TextButton(
                   onPressed: cubit.fetchNextPage,
-                  child: const Text('Retry'),
+                  child: Text(LocaleKeys.retry.tr()),
                 ),
               ),
             ),
