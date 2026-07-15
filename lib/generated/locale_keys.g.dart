@@ -72,5 +72,7 @@ abstract class  LocaleKeys {
   static const product_is_out_of_stock = 'product_is_out_of_stock';
   static const checkout = 'checkout';
   static const home = 'home';
-
+  static const order_no = 'order_no';
+  static const total_amount = 'total_amount';
+  static const no_orders_yet = 'no_orders_yet';
 }

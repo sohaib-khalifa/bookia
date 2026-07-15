@@ -67,5 +67,8 @@
     "cart_is_empty": "Cart is empty",
     "product_is_out_of_stock": "Product is out of stock",
     "checkout": "Checkout",
-    "home": "Home"
+    "home": "Home",
+    "order_no": "Order No. ",
+    "total_amount": "Total Amount:",
+    "no_orders_yet": "No orders yet"
 }

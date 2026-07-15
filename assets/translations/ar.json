@@ -67,5 +67,8 @@
     "cart_is_empty": "السلة فارغة",
     "product_is_out_of_stock": "المنتج غير متوفر في المخزون",
     "checkout": "الدفع",
-    "home": "الرئيسية"
+    "home": "الرئيسية",
+    "order_no": "رقم الطلب ",
+    "total_amount": "المبلغ الإجمالي:",
+    "no_orders_yet": "لا توجد طلبات بعد"
 }

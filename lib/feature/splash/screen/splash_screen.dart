@@ -19,6 +19,7 @@ class SplashScreen extends StatelessWidget {
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) async {
         await Future.delayed(const Duration(milliseconds: 300));
+        if (!context.mounted) return;
         if (state is SplashSuccessState) {
           // user is logged In + Cached profile data updated
           pushReplacement(context, Routes.main);

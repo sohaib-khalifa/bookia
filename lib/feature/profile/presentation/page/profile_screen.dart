@@ -78,7 +78,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
             ),
             const Gap(30),
-            ProfileItemWidget(title: LocaleKeys.my_orders.tr(), onTap: () {}),
+            ProfileItemWidget(
+              title: LocaleKeys.my_orders.tr(),
+              onTap: () {
+                pushTo(context, Routes.orderHistory);
+              },
+            ),
             const Gap(15),
             ProfileItemWidget(
               title: LocaleKeys.edit_profile.tr(),

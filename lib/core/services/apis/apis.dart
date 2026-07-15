@@ -32,4 +32,8 @@ class Apis {
 
     // search
   static const String productsSearch = "/products-search";
+
+  // order history
+  static const String orderHistory = "/order-history";
+
 }
