@@ -1,6 +1,6 @@
 import 'package:bookia/feature/auth/data/models/auth_params.dart';
 import 'package:bookia/feature/auth/data/repository/auth_repo.dart';
-import 'package:bookia/feature/auth/presentation/cubit/auth_state.dart';
+import 'package:bookia/feature/auth/presentation/login_register/cubit/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

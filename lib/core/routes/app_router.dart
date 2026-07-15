@@ -1,5 +1,5 @@
 import 'package:bookia/core/routes/routes.dart';
-import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';
+import 'package:bookia/feature/auth/presentation/login_register/cubit/auth_cubit.dart';
 import 'package:bookia/feature/auth/presentation/forget_password/screens/forgot_password_screen.dart';
 import 'package:bookia/feature/auth/presentation/login_register/screens/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/login_register/screens/register_screen.dart';
