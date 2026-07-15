@@ -81,4 +81,7 @@ abstract class  LocaleKeys {
   static const discount = 'discount';
   static const tax = 'tax';
   static const order_details = 'order_details';
+  static const success = 'success';
+  static const order_success_description = 'order_success_description';
+  static const back_to_home = 'back_to_home';
 }

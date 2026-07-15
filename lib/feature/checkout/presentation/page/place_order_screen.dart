@@ -43,14 +43,7 @@ class PlaceOrderScreen extends StatelessWidget {
             if (state is PlaceOrderLoading) {
               showLoadingDialog(context);
             } else if (state is PlaceOrderSuccess) {
-              //
-              //
-              //
-              //
-              //
-              //
-              // don't forget to make congrats screen here
-              pushToBase(context, Routes.main, extra: 0);
+              pushToBase(context, Routes.orderSuccess);
             } else if (state is PlaceOrderError) {
               pop(context);
               showToast(context, LocaleKeys.something_went_wrong.tr());

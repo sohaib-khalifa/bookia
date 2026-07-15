@@ -11,4 +11,5 @@ class Routes {
   static const String search = '/search';
   static const String orderHistory = '/order-history';
   static const String orderDetails = '/order-details';
+  static const String orderSuccess = '/order-success';
 }

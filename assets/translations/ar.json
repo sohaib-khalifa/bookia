@@ -76,5 +76,8 @@
     "sub_total": "المجموع الفرعي",
     "discount": "الخصم",
     "tax": "الضريبة",
-    "order_details": "تفاصيل الطلب"
+    "order_details": "تفاصيل الطلب",
+    "success": "!تم بنجاح",
+    "order_success_description": "سيتم توصيل طلبك قريباً.\nشكراً لاختيارك تطبيقنا!",
+    "back_to_home": "العودة للرئيسية"
 }

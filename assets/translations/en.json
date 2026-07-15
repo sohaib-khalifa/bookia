@@ -76,5 +76,8 @@
     "sub_total": "Sub Total",
     "discount": "Discount",
     "tax": "Tax",
-    "order_details": "Order Details"
+    "order_details": "Order Details",
+    "success": "SUCCESS!",
+    "order_success_description": "Your order will be delivered soon.\nThank you for choosing our app!",
+    "back_to_home": "Back To Home"
 }
