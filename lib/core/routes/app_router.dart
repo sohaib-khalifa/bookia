@@ -66,7 +66,7 @@ class AppRouter {
       GoRoute(
         path: Routes.forgotPassword,
         builder: (context, state) {
-          return ForgotPasswordScreen(email: state.extra as String);
+          return ForgotPasswordScreen(email: state.extra as String? ?? "");
           // return ForgotPasswordScreen();
         },
       ),
