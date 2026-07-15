@@ -70,5 +70,11 @@
     "home": "Home",
     "order_no": "Order No. ",
     "total_amount": "Total Amount:",
-    "no_orders_yet": "No orders yet"
+    "no_orders_yet": "No orders yet",
+    "delivery_address": "Delivery Address",
+    "payment_summary": "Payment Summary",
+    "sub_total": "Sub Total",
+    "discount": "Discount",
+    "tax": "Tax",
+    "order_details": "Order Details"
 }

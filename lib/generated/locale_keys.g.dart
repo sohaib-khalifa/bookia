@@ -75,4 +75,10 @@ abstract class  LocaleKeys {
   static const order_no = 'order_no';
   static const total_amount = 'total_amount';
   static const no_orders_yet = 'no_orders_yet';
+  static const delivery_address = 'delivery_address';
+  static const payment_summary = 'payment_summary';
+  static const sub_total = 'sub_total';
+  static const discount = 'discount';
+  static const tax = 'tax';
+  static const order_details = 'order_details';
 }

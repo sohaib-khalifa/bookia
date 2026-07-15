@@ -16,6 +16,8 @@ import 'package:bookia/feature/splash/screen/splash_screen.dart';
 import 'package:bookia/feature/welcome/welcome_screen.dart';
 import 'package:bookia/feature/order_history/presentation/cubit/order_history_cubit.dart';
 import 'package:bookia/feature/order_history/presentation/page/order_history_screen.dart';
+import 'package:bookia/feature/order_history/presentation/cubit/order_details/order_details_cubit.dart';
+import 'package:bookia/feature/order_history/presentation/page/order_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -108,6 +110,13 @@ class AppRouter {
         builder: (context, state) => BlocProvider(
           create: (context) => OrderHistoryCubit()..getOrderHistory(),
           child: const OrderHistoryScreen(),
+        ),
+      ),
+      GoRoute(
+        path: Routes.orderDetails,
+        builder: (context, state) => BlocProvider(
+          create: (context) => OrderDetailsCubit()..getOrderDetails(state.extra as int),
+          child: OrderDetailsScreen(orderId: state.extra as int),
         ),
       ),
     ],

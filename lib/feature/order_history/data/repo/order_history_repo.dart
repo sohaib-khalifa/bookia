@@ -1,6 +1,7 @@
 import 'package:bookia/core/services/apis/apis.dart';
 import 'package:bookia/core/services/apis/dio_provider.dart';
 import 'package:bookia/core/services/local/shared_pref.dart';
+import 'package:bookia/feature/order_history/data/models/order_details_response/order_details_response.dart';
 import 'package:bookia/feature/order_history/data/models/order_history_response/order_history_response.dart';
 
 class OrderHistoryRepo {
@@ -13,6 +14,22 @@ class OrderHistoryRepo {
       );
       if (response.statusCode == 200) {
         return OrderHistoryResponse.fromJson(response.data);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<OrderDetailsResponse?> getOrderDetails(int orderId) async {
+    try {
+      var response = await DioProvider.get(
+        endpoint: '${Apis.orderHistory}/$orderId',
+        headers: {"authorization": "Bearer ${SharedPref.getToken()}"},
+      );
+      if (response.statusCode == 200) {
+        return OrderDetailsResponse.fromJson(response.data);
       } else {
         return null;
       }

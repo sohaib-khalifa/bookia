@@ -70,5 +70,11 @@
     "home": "الرئيسية",
     "order_no": "رقم الطلب ",
     "total_amount": "المبلغ الإجمالي:",
-    "no_orders_yet": "لا توجد طلبات بعد"
+    "no_orders_yet": "لا توجد طلبات بعد",
+    "delivery_address": "عنوان التوصيل",
+    "payment_summary": "ملخص الدفع",
+    "sub_total": "المجموع الفرعي",
+    "discount": "الخصم",
+    "tax": "الضريبة",
+    "order_details": "تفاصيل الطلب"
 }
