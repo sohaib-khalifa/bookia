@@ -11,6 +11,7 @@ import 'package:bookia/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});
@@ -19,7 +20,6 @@ class WishlistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     log(SharedPref.getToken());
     return Scaffold(
-      // appBar: AppBar(title: Text('wishlist'.tr())),
             appBar: AppBar(title: Text( LocaleKeys.wishlist.tr())),
 
       body: MyBodyView(
@@ -34,14 +34,15 @@ class WishlistScreen extends StatelessWidget {
           },
           builder: (context, state) {
             var cubit = context.read<WishlistCubit>();
+            final crossAxisCount = (MediaQuery.sizeOf(context).width / 180).floor().clamp(2, 10);
 
             if (state is! GetWishlistLoaded) {
               return ShimmerGridView(
-                itemCount: 6,
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                mainAxisExtent: 290,
+                itemCount: crossAxisCount * 3,
+                crossAxisCount: crossAxisCount,
+                crossAxisSpacing: 10.w,
+                mainAxisSpacing: 10.h,
+                mainAxisExtent: 290.h,
               );
             }
 
@@ -49,12 +50,13 @@ class WishlistScreen extends StatelessWidget {
             if (cubit.wishlistProducts.isEmpty) {
               return Center(child: Text(LocaleKeys.wishlist_is_empty.tr()));
             }
+
             return GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                mainAxisExtent: 290,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                crossAxisSpacing: 10.w,
+                mainAxisSpacing: 10.h,
+                mainAxisExtent: 290.h,
               ),
               itemCount: cubit.wishlistProducts.length,
               itemBuilder: (BuildContext context, int index) {
@@ -69,9 +71,6 @@ class WishlistScreen extends StatelessWidget {
                       cubit.getWishlist();
                     }
                   },
-                  // onRefresh: () {
-                  //   cubit.getWishlist();
-                  // },
                 );
               },
             );

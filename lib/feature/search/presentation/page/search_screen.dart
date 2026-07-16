@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -63,17 +64,17 @@ class _SearchField extends StatelessWidget {
         hintStyle: TextStyles.body.copyWith(color: AppColors.greyColor),
         filled: true,
         fillColor: AppColors.white,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 0),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
           borderSide: const BorderSide(color: AppColors.borderColor),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
           borderSide: const BorderSide(color: AppColors.borderColor),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
           borderSide: const BorderSide(color: AppColors.primaryColor),
         ),
       ),
@@ -89,13 +90,14 @@ class _SearchBody extends StatelessWidget {
     final cubit = context.read<SearchCubit>();
     return BlocBuilder<SearchCubit, PagingState<int, Product>>(
       builder: (context, pagingState) {
+        final crossAxisCount = (MediaQuery.sizeOf(context).width / 180).floor().clamp(2, 10);
         if (pagingState.isLoading && pagingState.pages == null) {
           return ShimmerGridView(
-            itemCount: 6,
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            mainAxisExtent: 290,
+            itemCount: crossAxisCount * 3,
+            crossAxisCount: crossAxisCount,
+            crossAxisSpacing: 10.w,
+            mainAxisSpacing: 10.h,
+            mainAxisExtent: 290.h,
           );
         }
 
@@ -109,24 +111,23 @@ class _SearchBody extends StatelessWidget {
         }
 
         return Padding(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(16.w),
           child: PagedGridView<int, Product>(
             state: pagingState,
             fetchNextPage: cubit.fetchNextPage,
             padding: EdgeInsets.zero,
-
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: crossAxisCount,
+              crossAxisSpacing: 12.w,
+              mainAxisSpacing: 12.h,
               childAspectRatio: 0.62,
             ),
             builderDelegate: PagedChildBuilderDelegate<Product>(
               itemBuilder: (context, item, index) => BookCard(book: item),
-              newPageProgressIndicatorBuilder: (_) => const Center(
+              newPageProgressIndicatorBuilder: (_) => Center(
                 child: Padding(
-                  padding: EdgeInsets.all(16),
-                  child: CircularProgressIndicator(),
+                  padding: EdgeInsets.all(16.w),
+                  child: const CircularProgressIndicator(),
                 ),
               ),
               newPageErrorIndicatorBuilder: (_) => Center(
@@ -154,8 +155,8 @@ class _EmptyPrompt extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.search, size: 64, color: AppColors.greyColor),
-          const Gap(12),
+          Icon(Icons.search, size: 64.w, color: AppColors.greyColor),
+          Gap(12.h),
           Text(
             message,
             style: TextStyles.body.copyWith(color: AppColors.greyColor),

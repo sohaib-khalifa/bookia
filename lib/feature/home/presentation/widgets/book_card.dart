@@ -8,18 +8,17 @@ import 'package:bookia/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BookCard extends StatelessWidget {
   const BookCard({
     super.key,
     required this.book,
-    // this.onTap,
     this.onRemoveFromWishlist,
-      this.onRefresh,
+    this.onRefresh,
   });
 
   final Product book;
-  // final Function()? onTap;
   final VoidCallback? onRemoveFromWishlist;
   final VoidCallback? onRefresh;
 
@@ -31,13 +30,12 @@ class BookCard extends StatelessWidget {
           onRefresh?.call();
         });
       },
-      // onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(10.w),
         decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(10),
-        color: AppColors.white,
-        border: Border.all(color: AppColors.borderColor),
+          borderRadius: BorderRadius.circular(10.r),
+          color: AppColors.white,
+          border: Border.all(color: AppColors.borderColor),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +44,7 @@ class BookCard extends StatelessWidget {
               child: Hero(
                 tag: book.id ?? '',
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(10.r),
                   child: Image.network(
                     book.image ?? '',
                     fit: BoxFit.cover,
@@ -58,9 +56,9 @@ class BookCard extends StatelessWidget {
                 ),
               ),
             ),
-            Gap(10),
+            Gap(10.h),
             SizedBox(
-              height: 50,
+              height: 50.h,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -74,21 +72,20 @@ class BookCard extends StatelessWidget {
                 ],
               ),
             ),
-            Gap(10),
+            Gap(10.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(book.price ?? '', style: TextStyles.body),
+                Expanded(child: Text(book.price ?? '', style: TextStyles.body)),
                 onRemoveFromWishlist != null
                     ? IconButton(
                         onPressed: onRemoveFromWishlist,
                         icon: Icon(Icons.delete, color: AppColors.errorColor),
                       )
                     : MainButton(
-                        minHeight: 35,
-                        minWidth: 60,
+                        minHeight: 35.h,
+                        minWidth: 60.w,
                         bgColor: AppColors.darkColor,
-
                         text: LocaleKeys.buy.tr(),
                         onPressed: () {},
                       ),

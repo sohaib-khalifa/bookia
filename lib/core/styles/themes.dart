@@ -2,6 +2,7 @@ import 'package:bookia/core/constants/app_fonts.dart';
 import 'package:bookia/core/styles/colors.dart';
 import 'package:bookia/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class AppThemes {
   static ThemeData get lightTheme => ThemeData(
@@ -18,7 +19,7 @@ abstract class AppThemes {
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         padding: EdgeInsets.zero,
-        minimumSize: Size(60, 30),
+        minimumSize: Size(60.w, 30.h),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
     ),
@@ -27,19 +28,19 @@ abstract class AppThemes {
       fillColor: AppColors.white,
       filled: true,
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.r),
         borderSide: BorderSide(color: AppColors.borderColor),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.r),
         borderSide: BorderSide(color: AppColors.borderColor),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.r),
         borderSide: BorderSide(color: AppColors.errorColor),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.r),
         borderSide: BorderSide(color: AppColors.errorColor),
       ),
     ),

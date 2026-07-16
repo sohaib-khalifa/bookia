@@ -17,6 +17,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PlaceOrderScreen extends StatelessWidget {
   const PlaceOrderScreen({super.key, required this.total});
@@ -58,14 +59,14 @@ class PlaceOrderScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(LocaleKeys.place_your_order.tr(), style: TextStyles.headline),
-                    const Gap(10),
+                    Gap(10.h),
                     Text(
                       LocaleKeys.place_order_description.tr(),
                       style: TextStyles.caption1.copyWith(
                         color: AppColors.greyColor,
                       ),
                     ),
-                    const Gap(30),
+                    Gap(30.h),
                     CustomTextFormField(
                       controller: cubit.nameController,
                       keyboardType: TextInputType.emailAddress,
@@ -78,7 +79,7 @@ class PlaceOrderScreen extends StatelessWidget {
                         return null;
                       },
                     ),
-                    const Gap(15),
+                    Gap(15.h),
 
                     CustomTextFormField(
                       controller: cubit.addressController,
@@ -90,7 +91,7 @@ class PlaceOrderScreen extends StatelessWidget {
                         return null;
                       },
                     ),
-                    const Gap(15),
+                    Gap(15.h),
                     CustomTextFormField(
                       controller: cubit.phoneController,
                       keyboardType: TextInputType.phone,
@@ -104,7 +105,7 @@ class PlaceOrderScreen extends StatelessWidget {
                         return null;
                       },
                     ),
-                    const Gap(15),
+                    Gap(15.h),
                     CustomTextFormField(
                       readOnly: true,
                       controller: cubit.governorateController,
@@ -120,9 +121,9 @@ class PlaceOrderScreen extends StatelessWidget {
                         showModalBottomSheet(
                           context: context,
                           backgroundColor: AppColors.white,
-                          shape: const RoundedRectangleBorder(
+                          shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(20),
+                              top: Radius.circular(20.r),
                             ),
                           ),
                           builder: (context) {
@@ -134,7 +135,7 @@ class PlaceOrderScreen extends StatelessWidget {
                         );
                       },
                     ),
-                    const Gap(100),
+                    Gap(100.h),
                   ],
                 ),
               ),
@@ -146,7 +147,7 @@ class PlaceOrderScreen extends StatelessWidget {
         builder: (context, state) {
           var cubit = context.read<CheckoutCubit>();
           return Padding(
-            padding: const EdgeInsets.fromLTRB(22, 10, 22, 22),
+            padding: EdgeInsets.fromLTRB(22.w, 10.h, 22.w, 22.h),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -165,7 +166,7 @@ class PlaceOrderScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Gap(20),
+                Gap(20.h),
                 MainButton(
                   text: LocaleKeys.submit_order.tr(),
                   onPressed: () {

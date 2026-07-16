@@ -13,6 +13,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -55,7 +56,7 @@ class CartScreen extends StatelessWidget {
             }
             return ListView.separated(
               itemCount: cubit.cartItems.length,
-              separatorBuilder: (context, index) => const Gap(10),
+              separatorBuilder: (context, index) => Gap(10.h),
               itemBuilder: (BuildContext context, int index) {
                 var item = cubit.cartItems[index];
                 return CartItemWidget(
@@ -95,7 +96,7 @@ class CartScreen extends StatelessWidget {
             return const SizedBox.shrink();
           }
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -109,7 +110,7 @@ class CartScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Gap(10),
+                Gap(10.h),
                 MainButton(
                   text: LocaleKeys.checkout.tr(),
                   onPressed: () {

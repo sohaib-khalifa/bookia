@@ -6,6 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectGovernorateBottomSheet extends StatelessWidget {
   const SelectGovernorateBottomSheet({super.key});
@@ -16,12 +17,12 @@ class SelectGovernorateBottomSheet extends StatelessWidget {
       builder: (context, state) {
         var cubit = context.read<CheckoutCubit>();
         return Container(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(20.w),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(LocaleKeys.select_governorate.tr(), style: TextStyles.title),
-              const Gap(20),
+              Gap(20.h),
               if (state is GetGovernoratesLoading)
                 const Center(child: CircularProgressIndicator())
               else if (state is GetGovernoratesError)

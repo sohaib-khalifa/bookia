@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeSlider extends StatefulWidget {
   const HomeSlider({super.key});
@@ -27,23 +28,23 @@ class _HomeSliderState extends State<HomeSlider> {
 
         if (state is! HomeLoadedState) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Column(
               children: [
                 ShimmerCard(
                   width: double.infinity,
-                  height: 150,
-                  borderRadius: 10,
+                  height: 150.h,
+                  borderRadius: 10.r,
                 ),
-                Gap(10),
+                Gap(10.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
                     3,
                     (index) => Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 3),
-                      width: 10,
-                      height: 10,
+                      margin: EdgeInsets.symmetric(horizontal: 3.w),
+                      width: 10.w,
+                      height: 10.h,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.grey,
@@ -63,7 +64,7 @@ class _HomeSliderState extends State<HomeSlider> {
               itemBuilder:
                   (BuildContext context, int itemIndex, int pageViewIndex) {
                     return ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10.r),
                       child: Image.network(
                         cubit.sliders[itemIndex].image ?? '',
                         fit: BoxFit.cover,
@@ -76,7 +77,7 @@ class _HomeSliderState extends State<HomeSlider> {
                   },
               options: CarouselOptions(
                 reverse: false,
-                height: 150,
+                height: 150.h,
                 viewportFraction: 0.9,
                 autoPlay: true,
                 enlargeCenterPage: true,
@@ -89,14 +90,13 @@ class _HomeSliderState extends State<HomeSlider> {
                 scrollDirection: Axis.horizontal,
               ),
             ),
-            Gap(10),
+            Gap(10.h),
             AnimatedSmoothIndicator(
               activeIndex: activeIndex,
-
               count: cubit.sliders.length,
               effect: ExpandingDotsEffect(
-                dotWidth: 10,
-                dotHeight: 10,
+                dotWidth: 10.w,
+                dotHeight: 10.h,
                 expansionFactor: 4,
                 activeDotColor: AppColors.primaryColor,
                 dotColor: AppColors.borderColor,

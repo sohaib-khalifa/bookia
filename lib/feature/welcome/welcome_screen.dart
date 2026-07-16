@@ -9,6 +9,7 @@ import 'package:bookia/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -26,14 +27,14 @@ class WelcomeScreen extends StatelessWidget {
           ),
           Positioned(
             top: 0,
-            left: 20,
-            right: 20,
+            left: 20.w,
+            right: 20.w,
             bottom: 0,
             child: Column(
               children: [
                 Spacer(flex: 2),
-                CustomSvgPicture(path: AppImages.logoSvg, width: 250),
-                Gap(30),
+                CustomSvgPicture(path: AppImages.logoSvg, width: 250.w),
+                Gap(30.h),
                 Text(LocaleKeys.order_your_book_now.tr(), style: TextStyles.subtitle1),
                 Spacer(flex: 5),
                 MainButton(
@@ -42,7 +43,7 @@ class WelcomeScreen extends StatelessWidget {
                     pushTo(context, Routes.login);
                   },
                 ),
-                Gap(15),
+                Gap(15.h),
                 MainButton(
                   borderColor: AppColors.darkColor,
                   bgColor: AppColors.backgroundColor,

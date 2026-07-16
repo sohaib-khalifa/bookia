@@ -19,6 +19,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -75,7 +76,7 @@ class RegisterScreen extends StatelessWidget {
                 LocaleKeys.hello_register.tr(),
                 style: TextStyles.headline,
               ),
-              Gap(32),
+              Gap(32.h),
               CustomTextFormField(
                 controller: cubit.nameController,
                 hintText: LocaleKeys.full_name.tr(),
@@ -87,7 +88,7 @@ class RegisterScreen extends StatelessWidget {
                 },
               ),
 
-              Gap(16),
+              Gap(16.h),
               CustomTextFormField(
                 controller: cubit.emailController,
                 hintText: LocaleKeys.email.tr(),
@@ -100,7 +101,7 @@ class RegisterScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              Gap(16),
+              Gap(16.h),
               PasswordTextFormField(
                 controller: cubit.passwordController,
                 hintText: LocaleKeys.password.tr(),
@@ -111,7 +112,7 @@ class RegisterScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              Gap(16),
+              Gap(16.h),
               PasswordTextFormField(
                 controller: cubit.passwordConfirmationController,
                 hintText: LocaleKeys.confirm_password.tr(),
@@ -124,7 +125,7 @@ class RegisterScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              Gap(30),
+              Gap(30.h),
               MainButton(
                 text: LocaleKeys.register.tr(),
                 onPressed: () {

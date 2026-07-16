@@ -18,6 +18,7 @@ import 'package:bookia/feature/auth/presentation/login_register/widgets/social_l
 import 'package:bookia/feature/auth/presentation/widgets/auth_footer.dart';
 import 'package:bookia/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -79,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                 LocaleKeys.welcome_back.tr(),
                 style: TextStyles.headline,
               ),
-              Gap(32),
+              Gap(32.h),
               CustomTextFormField(
                 controller: cubit.emailController,
                 hintText: LocaleKeys.enter_your_email.tr(),
@@ -92,7 +93,7 @@ class LoginScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              Gap(16),
+              Gap(16.h),
               PasswordTextFormField(
                 controller: cubit.passwordController,
                 hintText: LocaleKeys.enter_your_password.tr(),
@@ -103,7 +104,7 @@ class LoginScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              Gap(10),
+              Gap(10.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -120,7 +121,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Gap(30),
+              Gap(30.h),
               MainButton(
                 text: LocaleKeys.login.tr(),
                 onPressed: () {
@@ -129,7 +130,7 @@ class LoginScreen extends StatelessWidget {
                   }
                 },
               ),
-              Gap(30),
+              Gap(30.h),
               SocialLogin(),
             ],
           ),

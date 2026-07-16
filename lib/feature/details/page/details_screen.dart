@@ -11,6 +11,7 @@ import 'package:bookia/feature/wishlist/presentation/widgets/wishlist_action/wis
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key, required this.model});
@@ -38,43 +39,43 @@ class DetailsScreen extends StatelessWidget {
               Hero(
                 tag: model.id ?? '',
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(10.r),
                   child: CachedNetworkImage(
                     imageUrl: model.image ?? '',
-                    width: 180,
-                    height: 270,
+                    width: 180.w,
+                    height: 270.h,
                     fit: BoxFit.cover,
                     progressIndicatorBuilder: (context, url, progress) {
                       return ShimmerCard(
-                        width: 180,
-                        height: 270,
-                        borderRadius: 10,
+                        width: 180.w,
+                        height: 270.h,
+                        borderRadius: 10.r,
                       );
                     },
                     errorWidget: (context, url, error) {
                       return ShimmerCard(
-                        width: 180,
-                        height: 270,
-                        borderRadius: 10,
+                        width: 180.w,
+                        height: 270.h,
+                        borderRadius: 10.r,
                       );
                     },
                   ),
                 ),
               ),
-              Gap(11),
+              Gap(11.h),
               Text(
                 model.name ?? '',
                 style: TextStyles.headline,
                 textAlign: TextAlign.center,
               ),
-              Gap(11),
+              Gap(11.h),
               Text(
                 model.category ?? '',
                 style: TextStyles.caption1.copyWith(
                   color: AppColors.primaryColor,
                 ),
               ),
-              Gap(20),
+              Gap(20.h),
               Text(
                 model.description ?? '',
                 textAlign: TextAlign.justify,
@@ -85,7 +86,7 @@ class DetailsScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.fromLTRB(22, 5, 22, 22),
+        padding: EdgeInsets.fromLTRB(22.w, 5.h, 22.w, 22.h),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -4,6 +4,7 @@ import 'package:bookia/feature/cart/data/models/cart_response/cart_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartItemWidget extends StatelessWidget {
   const CartItemWidget({
@@ -22,25 +23,25 @@ class CartItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
         color: AppColors.white,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10.r),
         border: Border.all(color: AppColors.borderColor),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
             child: CachedNetworkImage(
               imageUrl: item.itemProductImage ?? '',
-              height: 120,
-              width: 100,
+              height: 120.h,
+              width: 100.w,
               fit: BoxFit.cover,
             ),
           ),
-          const Gap(10),
+          Gap(10.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +60,7 @@ class CartItemWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Gap(10),
+                    Gap(10.w),
                     IconButton(icon: Icon(Icons.delete), onPressed: onDelete),
                   ],
                 ),
@@ -72,25 +73,25 @@ class CartItemWidget extends StatelessWidget {
                   style: TextStyles.subtitle2,
                 ),
 
-                const Gap(16),
+                Gap(16.h),
 
                 // counter
                 Row(
-                  spacing: 10,
+                  spacing: 10.w,
                   children: [
                     GestureDetector(
                       onTap: onDecrement,
                       child: Container(
-                        padding: EdgeInsets.all(5),
+                        padding: EdgeInsets.all(5.w),
                         decoration: BoxDecoration(
                           color: AppColors.borderColor,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                         ),
                         child: Icon(Icons.remove),
                       ),
                     ),
                     SizedBox(
-                      width: 25,
+                      width: 25.w,
                       child: Text(
                         item.itemQuantity.toString(),
                         style: TextStyles.body,
@@ -100,10 +101,10 @@ class CartItemWidget extends StatelessWidget {
                     GestureDetector(
                       onTap: onIncrement,
                       child: Container(
-                        padding: EdgeInsets.all(5),
+                        padding: EdgeInsets.all(5.w),
                         decoration: BoxDecoration(
                           color: AppColors.borderColor,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                         ),
                         child: Icon(Icons.add),
                       ),

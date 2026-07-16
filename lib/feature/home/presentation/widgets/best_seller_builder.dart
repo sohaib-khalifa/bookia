@@ -9,6 +9,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BestSellerBuilder extends StatelessWidget {
   const BestSellerBuilder({super.key});
@@ -18,29 +19,29 @@ class BestSellerBuilder extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         var cubit = context.read<HomeCubit>();
+        final crossAxisCount = (MediaQuery.sizeOf(context).width / 180).floor().clamp(2, 10);
         return MyBodyView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Text('best_seller'.tr(), style: TextStyles.title),
               Text(LocaleKeys.best_seller.tr(), style: TextStyles.title),
 
-              Gap(10),
+              Gap(10.h),
               if (state is! HomeLoadedState)
                 ShimmerGridView(
-                  itemCount: 6,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  mainAxisExtent: 290,
+                  itemCount: crossAxisCount * 2,
+                  crossAxisCount: crossAxisCount,
+                  crossAxisSpacing: 10.w,
+                  mainAxisSpacing: 10.h,
+                  mainAxisExtent: 290.h,
                 )
               else
                 GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    mainAxisExtent: 290,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount,
+                    crossAxisSpacing: 10.w,
+                    mainAxisSpacing: 10.h,
+                    mainAxisExtent: 290.h,
                   ),
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,

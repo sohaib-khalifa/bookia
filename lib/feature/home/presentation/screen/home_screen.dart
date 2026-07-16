@@ -10,7 +10,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-// import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -23,13 +23,11 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Row(
-            children: [CustomSvgPicture(path: AppImages.logoSvg, height: 30)],
+            children: [CustomSvgPicture(path: AppImages.logoSvg, height: 30.h)],
           ),
           actions: [
             IconButton(
               onPressed: () {
-                // get locale
-                // set another locale
                 context.setLocale(
                   context.isArabic ? Locale('en') : Locale('ar'),
                 );
@@ -45,11 +43,10 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         body: SingleChildScrollView(
-          // physics: BouncingScrollPhysics(),
           physics: const AlwaysScrollableScrollPhysics(
             parent: ClampingScrollPhysics(),
           ),
-          child: Column(children: [HomeSlider(), Gap(20), BestSellerBuilder()]),
+          child: Column(children: [HomeSlider(), Gap(20.h), BestSellerBuilder()]),
         ),
       ),
     );
